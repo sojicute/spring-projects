@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="studentDao" class="com.spring.quiz.dao.StudentDaoImpl">
+    </bean>
+
+    <bean id="questionDao" class="com.spring.quiz.dao.QuestionDaoImpl">
+        <property name="fileName" value="questions.csv"/>
+    </bean>
+
+    <bean id="studentService" class="com.spring.quiz.service.StudentServiceImpl">
+        <constructor-arg name="studentDao" ref="studentDao"/>
+    </bean>
+    
+    <bean id="questionService" class="com.spring.quiz.service.QuestionServiceImpl">
+        <constructor-arg name="questionDao" ref="questionDao" />
+    </bean>
+
+    <bean id="quizService" class="com.spring.quiz.service.QuizServiceImpl">
+        <constructor-arg name="questionService" ref="questionService" />
+        <constructor-arg name="studentService" ref="studentService" />
+    </bean>
+
+</beans>
