@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Genre {
 	@Id
-	private long id;
+	private final long id;
 	private String name;
 	
 	@MappedCollection(keyColumn = "GENRE_ID", idColumn = "GENRE_ID")
