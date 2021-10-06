@@ -4,18 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.spring</groupId>
+    <groupId>com.github.sojicute</groupId>
     <artifactId>spring-projects</artifactId>
+    <version>1.0</version>
+    
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+        
     <modules>
         <module>spring-IoC-xml</module>
         <module>spring-IoC-annotation</module>
+        <module>spring-boot-jdbc</module>
     </modules>
-
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
-
 </project>
