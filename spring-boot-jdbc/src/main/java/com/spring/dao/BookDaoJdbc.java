@@ -28,13 +28,13 @@ public class BookDaoJdbc implements BookDao {
 
     @Override
     public void insert(Book book) {
-        jdbc.update("insert into books(id, title) values(:id, :title)",
-                Map.of("id", book.getId(), "title", book.getTitle()));
+        jdbc.update("insert into books(id, title, genre_id, author_id) values(:id, :title, :genre, :author)",
+                Map.of("id", book.getId(), "title", book.getTitle(), "genre", book.getGenre().getId(), "author", book.getAuthor().getId()));
     }
 
     @Override
     public Book getById(long id) {
-        return jdbc.queryForObject("select * from books where id = :id",
+        return jdbc.queryForObject("select * from books join authors on books.author_id = authors.id join genres on books.genre_id = genres.id where books.id = :id",
                 Map.of("id", id), new BookMapper());
     }
 
@@ -45,7 +45,7 @@ public class BookDaoJdbc implements BookDao {
 
     @Override
     public void deleteById(long id) {
-
+    	jdbc.update("delete from books where id = :id", Map.of("id", id));
     }
 
     private static class BookMapper implements RowMapper<Book> {
@@ -57,11 +57,9 @@ public class BookDaoJdbc implements BookDao {
             String title = resultSet.getString("title");
             Book book = new Book(id, title);
 
-            Author author = new Author(resultSet.getLong("author_id"));
-            author.setName(resultSet.getString("authors.name"));
+            Author author = new Author(resultSet.getLong("author_id"), resultSet.getString("authors.name"));
 
-            Genre genre = new Genre(resultSet.getLong("genre_id"));
-            genre.setName(resultSet.getString("genres.name"));
+            Genre genre = new Genre(resultSet.getLong("genre_id"), resultSet.getString("genres.name"));
 
             book.setAuthor(author);
             book.setGenre(genre);

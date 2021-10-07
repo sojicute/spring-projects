@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 public class Author {
 	@Id
 	private final long id;
-	private String name;
+	private final String name;
 	
 	@MappedCollection(keyColumn = "AUTHOR_ID", idColumn = "AUTHOR_ID")
 	private Set<Book> books;
