@@ -51,4 +51,10 @@ public class BookDaoJdbcTest {
 				.hasFieldOrPropertyWithValue("id", BOOK_ID)
 				.hasFieldOrPropertyWithValue("title", BOOK_TITLE);
 	}
+
+
+	@Test
+	void getAll() {
+
+	}
 }
