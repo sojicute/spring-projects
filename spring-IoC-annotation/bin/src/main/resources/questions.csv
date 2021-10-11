@@ -1,5 +1,0 @@
-Which Set class should be most popular in a multi-threading environment, considering performance constraint?; HashSet; ConcurrentSkipListSet; LinkedHashSet; CopyOnWriteArraySet;2
-Which allows the removal of elements from a collection?; Enumeration; Iterator; Both; None of the above;4
-The Comparator interface contains the method?; compareWith; compareTo(); compare();;3
-Which offers the best performance?; TreeMap; HashMap; LinkedHashMap;;2
-Which of these is the most popularly used class as a key in a HashMap?; String; Integer; Double; All of the above;2
