@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,4 +25,9 @@ public class Book {
     @OneToOne(targetEntity = Author.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
     private Author author;
+
+    @OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "book_id")
+    private List<Comment> comments;
+
 }

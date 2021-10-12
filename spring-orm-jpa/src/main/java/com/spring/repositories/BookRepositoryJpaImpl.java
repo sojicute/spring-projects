@@ -40,14 +40,12 @@ public class BookRepositoryJpaImpl implements BookRepositoryJpa {
     }
 
     @Override
-    public List<Book> findByTitle(String title) {
-        TypedQuery<Book> query = em.createQuery("select b from Book b where b.title = :title", Book.class);
-        query.setParameter("title", title);
-        return query.getResultList();
+    public long calcBooksCount() {
+        return em.createQuery("select count(b) from Book b", Long.class).getSingleResult();
     }
 
     @Override
-    public void updateNameById(long id, String title) {
+    public void updateTitleById(long id, String title) {
         Query query = em.createQuery("update Book b set b.title = :title where b.id = :id");
         query.setParameter("title", title);
         query.setParameter("id", id);
