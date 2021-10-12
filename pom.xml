@@ -15,5 +15,6 @@
         <module>spring-IoC-annotation</module>
         <module>spring-boot-jdbc</module>
         <module>spring-orm-jpa</module>
+        <module>spring-lifecycle-bean</module>
     </modules>
 </project>
