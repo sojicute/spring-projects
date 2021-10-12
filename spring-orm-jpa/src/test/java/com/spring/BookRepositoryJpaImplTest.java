@@ -30,7 +30,7 @@ public class BookRepositoryJpaImplTest {
 
         System.out.println("\n\n\n\n----------------------------------------------------------------------------------------------------------");
         val books = repositoryJpa.findAll();
-        assertThat(books).isNotNull().hasSize(5)
+        assertThat(books).isNotNull().hasSize(1)
                 .allMatch(s -> !s.getAuthor().equals(""));
         System.out.println("----------------------------------------------------------------------------------------------------------\n\n\n\n");
 
